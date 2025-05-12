@@ -22,8 +22,8 @@ interface PostCardProps {
 
 export default function PostCard({ post, onUpdate }: PostCardProps) {
   const { user } = useAuth();
-  const [isLiked, setIsLiked] = useState(post.is_liked === "true");
-  const [isSaved, setIsSaved] = useState(post.is_saved === "true");
+  const [isLiked, setIsLiked] = useState<boolean>(post.is_liked || false);
+  const [isSaved, setIsSaved] = useState(post.is_saved);
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -143,7 +143,7 @@ export default function PostCard({ post, onUpdate }: PostCardProps) {
         <div className="flex items-center justify-between w-full mb-2">
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={handleLike} className={isLiked ? "text-red-500" : ""}>
-              <Heart className={`h-5 w-5 ${isLiked ? "fill-current" : ""}`} />
+              <Heart className={`h-5 w-5 ${isLiked ? "fill-current text-red-500" : ""} `} />
               <span className="ml-1">{post.likes}</span>
             </Button>
 
@@ -182,7 +182,7 @@ export default function PostCard({ post, onUpdate }: PostCardProps) {
                             <p className="font-medium text-sm">{comment.creator.username}</p>
                             <p className="text-sm">{comment.content}</p>
                           </div>
-                          {post.created}
+                          {comment.created}
                         </div>
                       </div>
                     ))}

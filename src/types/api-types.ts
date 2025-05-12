@@ -49,13 +49,13 @@ export interface Post {
   id: number;
   creator: Creator;
   likes: string;
-  is_liked: string;
+  is_liked: boolean;
   image: string | null;
   content: string;
   created: string;
   comments: string;
   saves: string;
-  is_saved: string;
+  is_saved: boolean;
   is_commented: string;
   is_following_user: string;
   is_followed_by_user: string;
