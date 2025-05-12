@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import { PostService } from "@/services/post-service";
 import { CommentService } from "@/services/comment-service";
 import { useAuth } from "@/contexts/auth-context";
-import { formatDistanceToNow } from "date-fns";
 import { Heart, MessageCircle, Bookmark, MoreHorizontal, Send, Edit, Trash2 } from "lucide-react";
 import { change_minio } from "@/lib/utils";
 
